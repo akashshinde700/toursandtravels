@@ -1,0 +1,25 @@
+Aaisaheb Tours & Travels Website + Admin Panel | Full Product Walkthrough
+
+Explore the public travel website, booking request flow and owner admin panel in this Hinglish walkthrough by Aetherdev Solutions. All prices, names, phone numbers and visitor data shown inside the product demo are sample data. Please confirm actual prices and availability with the business.
+
+CHAPTERS
+00:00  Introduction: Aetherdev & the product
+00:31  Home page & navigation
+00:59  Fleet and tariff
+01:28  Routes, destinations and About
+01:56  How to send a booking request
+02:23  Admin login, preview & publish
+02:50  Admin: Contact, Prices, Cars & Routes
+03:17  Admin: Home hero, Destinations & Page photos
+03:45  Enquiries and Visitors panels
+04:16  Contact Aetherdev Solutions
+
+Need custom software?
+Website: https://www.aetherdevsolutions.com/
+Email: info@aetherdevsolutions.com
+Sanket Gulave: +91 89751 85770
+Akash Shinde: +91 86000 98315
+Office: Shivaji Chowk, 101, Raigad Building, Hinjawadi, Maharashtra 411057, India
+Hours: Mon–Sun, 9 AM–10 PM IST
+
+#CustomSoftware #WebsiteDevelopment #AdminPanel #AetherdevSolutions
