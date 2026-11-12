@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+/* Palette — "Royal Teal & Gold": warm cream paper, deep teal-black ink, peacock teal for
+   actions and dark sections, champagne gold for highlights, a deep wine accent. */
+@theme {
+  --color-ivory: #faf7f0;
+  --color-sand: #efe7d6;
+  --color-ink: #112826;
+  --color-ink-soft: #4b5f5c;
+  --color-gold: #e0bd6a;
+  --color-bronze: #a5792b;
+  --color-wine: #7c2d3b;
+  --color-teal: #0e6b63;
+  --color-deep: #0a4a45;
+  --color-mint: #6fc3b2;
+  --color-forest: #1f7a5a;
+
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  background: var(--color-ivory);
+  color: var(--color-ink);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+@utility text-gilded {
+  background: linear-gradient(100deg, #e9c979 0%, #c99a3e 50%, #a5792b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-royal {
+  background-image: linear-gradient(120deg, #13867b 0%, #0e6b63 45%, #0a4a45 100%);
+}
+
+@utility bg-deep {
+  background-image: linear-gradient(135deg, #0e6b63 0%, #0a4a45 55%, #0b2f2d 100%);
+}
+
+/* Soft multi-colour washes for light sections */
+@utility mesh-warm {
+  background-color: #faf7f0;
+  background-image:
+    radial-gradient(at 10% 10%, rgb(224 189 106 / 0.22) 0, transparent 45%),
+    radial-gradient(at 90% 20%, rgb(14 107 99 / 0.12) 0, transparent 45%),
+    radial-gradient(at 50% 100%, rgb(224 189 106 / 0.14) 0, transparent 55%);
+}
+
+@utility glass {
+  background: rgb(255 255 255 / 0.14);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgb(255 255 255 / 0.28);
+}
+
+/* Paper grain to keep big ivory areas from looking flat. */
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Endless photo strip */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: marquee 60s linear infinite;
+}
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Slow "breathing" zoom on hero photos */
+@keyframes kenburns {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1.18) translate3d(0, -1.5%, 0);
+  }
+}
+.kenburns {
+  animation: kenburns 22s ease-in-out infinite alternate;
+}
+
+/* Lane markings rushing toward the viewer */
+@keyframes lane {
+  to {
+    background-position: 0 240px;
+  }
+}
+.lane {
+  background-image: linear-gradient(to bottom, rgb(255 255 255 / 0.9) 0 55%, transparent 55% 100%);
+  background-size: 100% 120px;
+  animation: lane 0.9s linear infinite;
+}
+
+/* Wind streaks passing the car */
+@keyframes lane-x {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(-40vw);
+  }
+}
+.lane-x {
+  animation: lane-x 0.7s linear infinite;
+}
+
+/* Dashed route lines that draw themselves */
+.route-dash {
+  stroke-dasharray: 6 10;
+  animation: dash 1.6s linear infinite;
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+/* Wheels: the sharp rim rotates with --spin; a motion-blur disc fades in only at speed */
+.wheel .rim-sharp {
+  transform: rotate(var(--spin, 0deg));
+  will-change: transform;
+}
+.wheel .rim {
+  opacity: var(--wheel-blur, 0);
+  transition: opacity 0.4s;
+}
+@keyframes spin-wheel {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-wheels .rim-sharp,
+.group:hover .spin-on-hover .rim-sharp {
+  animation: spin-wheel 0.9s linear infinite;
+}
+.spin-wheels {
+  --wheel-blur: 0.35;
+}
+
+/* Dust kicked up behind the rear wheel */
+@keyframes dust {
+  0% {
+    transform: translate(0, 0) scale(0.4);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate(-260px, -40px) scale(2.4);
+    opacity: 0;
+  }
+}
+.dust span {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgb(236 210 168 / 0.9), transparent 70%);
+  filter: blur(6px);
+  animation: dust 1.4s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee,
+  .kenburns,
+  .lane,
+  .route-dash,
+  .wheel .rim-sharp,
+  .dust span {
+    animation: none;
+  }
+}
