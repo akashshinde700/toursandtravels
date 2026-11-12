@@ -58,6 +58,7 @@ server.log
 
 # Local deployment helper contains credentials
 /deploy.py
+/deploy_config.json
 
 # Python cache
 __pycache__/
